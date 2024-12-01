@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import crypto from 'crypto';
 import { logger } from './logger.js';
 import { banner } from './banner.js';
-import { solve2Captcha, solve2Captcha } from './utils/solver.js';
+import { solveAntiCaptcha, solve2Captcha } from './utils/solver.js';
 
 const rl = readline.createInterface({
     input: process.stdin,
