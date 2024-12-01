@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import crypto from 'crypto';
 import { logger } from './logger.js';
 import { banner } from './banner.js';
-import { solveAntiCaptcha, solve2Captcha } from './utils/solver.js';
+import { solve2Captcha, solve2Captcha } from './utils/solver.js';
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -18,11 +18,11 @@ let headers = {
 // Register Function
 async function register(name, email, password, apiKey) {
     const payloadReg = {
-        captcha_token: await solveAntiCaptcha(apiKey),
+        captcha_token: await solve2Captcha(apiKey),
         full_name: name,
         email: email,
         password: password,
-        referral_code: "IOVO3G77Q0QQ",
+        referral_code: "CXB7CTLX6H1I",
     };
     const response = await coday(
         'https://api.meshchain.ai/meshmain/auth/email-signup',
@@ -36,7 +36,7 @@ async function register(name, email, password, apiKey) {
 // Login Function
 async function login(email, password, apiKey) {
     const payloadLogin = {
-        captcha_token: await solveAntiCaptcha(apiKey),
+        captcha_token: await solve2Captcha(apiKey),
         email: email,
         password: password,
     };
@@ -58,7 +58,7 @@ async function login(email, password, apiKey) {
 // Verify Email Function
 async function verify(email, otp, apiKey) {
     const payloadVerify = {
-        captcha_token: await solveAntiCaptcha(apiKey),
+        captcha_token: await solve2Captcha(apiKey),
         email: email,
         code: otp,
     };
