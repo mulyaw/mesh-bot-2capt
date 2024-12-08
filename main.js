@@ -76,7 +76,7 @@ async function processAccount({ access_token, refresh_token, unique_ids }, accou
             continue;
         }
 
-        if (filled.value > 10) {
+        if (filled.value > 25) {
             logger(`Account ${accountIndex + 1} | ${unique_id}: Attempting to claim reward...`);
             const reward = await claim(unique_id, headers);
             if (reward) {
